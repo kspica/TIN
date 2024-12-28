@@ -1,0 +1,214 @@
+   /* Ustawienia ogólne */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ADD8E6; /* Jasnoniebieskie tło */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main {
+	background-image: url('image.jpg');
+}
+
+
+/* Kontener nawigacji i zawartości */
+.container {
+    display: flex;
+    flex: 1;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+header {
+	background-color: rgba(173, 216, 230, 0.1);
+}
+/* Styl dla nawigacji po lewej stronie */
+nav {
+    width: 200px; /* Szerokość menu */
+    background-color: #3366CC; /* Ciemnoniebieskie tło */
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+	margin: 0;
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #224488; /* Ciemniejszy niebieski na hover */
+}
+
+/* Sekcja główna po prawej stronie */
+section {
+    flex: 1;
+    padding: 20px;
+    background-color: #87CEEB; /* Niebieskie tło dla zawartości */
+}
+
+/* Artykuły i tekst */
+article {
+    margin-bottom: 20px;
+}
+
+h1.klasa {
+    color: #003366; /* Ciemny niebieski dla nagłówków */
+}
+
+
+/* Formularz */
+form div {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background-color: #3366CC;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #224488;
+}
+
+/* Tabela */
+/* Tabela bez ramek i z naprzemiennym kolorem wierszy */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Usunięcie ramek */
+    margin-top: 20px;
+    background-color: #4682B4; /* Niebieski dla tabeli */
+    color: white;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table th:not(:last-child),
+table td:not(:last-child) {
+    border-right: 2px solid #87CEEB; /* Czerwona ramka po prawej stronie */
+}
+
+
+tbody tr:nth-child(odd) {
+    background-color: #87CEEB; /* Utrzymanie pierwotnego koloru dla nieparzystych wierszy */
+}
+
+/* Styl dla nagłówków tabeli */
+table th {
+    background-color: #224488; /* Ciemniejszy niebieski dla nagłówków tabeli */
+}
+
+
+/* Stopka */
+footer {
+    background-color: #000080; /* Ciemnoniebieska stopka */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+/* Stylizacja formularza na dwie kolumny */
+form {
+    display: flex;
+    gap: 20px;
+}
+
+form > div {
+    flex: 1;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background-color: #3366CC;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #224488;
+}
+
+
+/* Ustawienie radia i selecta w jednej kolumnie */
+form > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+header nav ul li ul li a {
+    background-color: #ADD8E6; /* Jaśniejsze tło */
+    padding: 8px 20px; /* Większe wcięcie po lewej */
+    display: block;
+    text-decoration: none;
+    font-weight: normal;
+	padding-left: 30px;
+}
