@@ -1,0 +1,10 @@
+.divs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divs-container div {
+    padding: 20px;
+    border: 1px solid black;
+}

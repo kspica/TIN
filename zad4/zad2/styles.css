@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;  /* Wyrównanie w poziomie */
+    align-items: center;
+    background-color: dimgrey;
+}
+.result {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #4dc3a6;
+    height: 75px;
+    margin: 0;
+    border: 2px solid #06785e;
+    color: #06785e;
+    font-size: 30px;
+}
+.calculator .result .controls{
+    width: 500px;
+}
+.controls {
+    display: flex; /* Flexbox dla ułożenia w wierszu */
+    align-items: center; /* Wyrównanie elementów w pionie */
+    flex-direction: row; /* Ustawienie elementów w jednej linii poziomej */
+    background-color: #dddddd;
+    gap: 10px; /* Odstęp między elementami */
+    height: 100px;
+}
+
+/* Stylizacja pól input i select */
+.controls input,
+.controls select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100px; /* Szerokość dla spójnego wyglądu */
+}
+
+/* Stylizacja przycisku */
+button {
+    padding: 10px 20px;
+    border: none;
+    font-size: 20px;
+    color: grey;
+    background-color: #474444;
+}
+
+

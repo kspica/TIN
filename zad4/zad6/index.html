@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Lightbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="gallery">
+  <a href="#" class="image-link" data-full="img/img1.jpg">
+    <img src="img/img1.jpg" alt="Obraz 1" class="thumbnail">
+  </a>
+  <a href="#" class="image-link" data-full="img/img2.jpg">
+    <img src="img/img2.jpg" alt="Obraz 2" class="thumbnail">
+  </a>
+  <a href="#" class="image-link" data-full="img/img3.jpg">
+    <img src="img/img3.jpg" alt="Obraz 3" class="thumbnail">
+  </a>
+  <a href="#" class="image-link" data-full="img/img4.jpg">
+    <img src="img/img4.jpg" alt="Obraz 4" class="thumbnail">
+  </a>
+</div>
+
+<div id="lightbox" class="lightbox">
+  <span id="close" class="close-btn">&times;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Powiększony obraz">
+  </div>
+  <button id="prev" class="nav-btn">Prev</button>
+  <button id="next" class="nav-btn">Next</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
