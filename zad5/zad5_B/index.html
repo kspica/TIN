@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Zdjęć</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Galeria Zdjęć</h1>
+    <div id="gallery-container" class="gallery-list"></div>
+    <div id="album-container" style="display:none;">
+        <button id="back-to-gallery">Wróć do listy galerii</button>
+        <h2 id="album-title"></h2>
+        <div id="photos-container" class="photos"></div>
+        <form id="add-photo-form">
+            <h3>Dodaj nowe zdjęcie</h3>
+            <input type="text" id="photo-title" placeholder="Tytuł zdjęcia" required/>
+            <input type="url" id="photo-url" placeholder="URL zdjęcia" required/>
+            <button type="submit">Dodaj</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
