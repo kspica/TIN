@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    position: relative;
+    margin-right: 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    color: blue;
+}
+
+header nav ul li a:visited {
+    color: purple;
+}
+
+header nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 10;
+    width: 200px;
+}
+
+header nav ul li:hover ul {
+    display: block;
+}
+
+header nav ul li ul li {
+    margin: 0;
+}
+
+header nav ul li ul li a {
+    padding: 5px 10px;
+    white-space: nowrap;
+    border-bottom: 1px solid #ccc;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+article {
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+.shadow-box {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+form {
+    background-color: #c3c0c0;
+    border: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.full-width {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    padding: 8px;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    flex-wrap: nowrap;
+}
+
+footer div {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #ccc;
+}
+
+footer div:last-child {
+    border-right: none;
+}
+
+@media (max-width: 1000px) {
+    .articles-container {
+        flex-direction: column;
+    }
+
+    article {
+        flex: 1 1 100%;
+    }
+}

@@ -1,46 +1,40 @@
-   /* Ustawienia ogólne */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #ADD8E6; /* Jasnoniebieskie tło */
+    background-color: #ADD8E6;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-.main {
-	background-image: url('image.jpg');
+    background-image: url('image.jpg');
 }
 
-
-/* Kontener nawigacji i zawartości */
 .container {
     display: flex;
     flex: 1;
-	margin-left: 30px;
-	margin-right: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 header {
-	background-color: rgba(173, 216, 230, 0.1);
+    background-color: rgba(173, 216, 230, 0.1);
 }
-/* Styl dla nawigacji po lewej stronie */
+
 nav {
-    width: 200px; /* Szerokość menu */
-    background-color: #3366CC; /* Ciemnoniebieskie tło */
+    width: 200px;
+    background-color: #3366CC;
     color: white;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-	margin: 0;
+    margin: 0;
 }
-
 
 nav ul li a {
     color: white;
@@ -50,27 +44,33 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #224488; /* Ciemniejszy niebieski na hover */
+    background-color: #224488;
 }
 
-/* Sekcja główna po prawej stronie */
 section {
     flex: 1;
     padding: 20px;
-    background-color: #87CEEB; /* Niebieskie tło dla zawartości */
+    background-color: #87CEEB;
+    height: 650px;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
-/* Artykuły i tekst */
 article {
     margin-bottom: 20px;
 }
 
-h1.klasa {
-    color: #003366; /* Ciemny niebieski dla nagłówków */
+article img {
+    max-width: 50%;
+    height: auto;
+    aspect-ratio: 16 / 9;
 }
 
+h1.klasa {
+    color: #003366;
+    font-size: 40px;
+}
 
-/* Formularz */
 form div {
     margin-bottom: 10px;
 }
@@ -102,13 +102,11 @@ input[type="submit"]:hover {
     background-color: #224488;
 }
 
-/* Tabela */
-/* Tabela bez ramek i z naprzemiennym kolorem wierszy */
 table {
     width: 100%;
-    border-collapse: collapse; /* Usunięcie ramek */
+    border-collapse: collapse;
     margin-top: 20px;
-    background-color: #4682B4; /* Niebieski dla tabeli */
+    background-color: #4682B4;
     color: white;
 }
 
@@ -120,32 +118,27 @@ table td {
 
 table th:not(:last-child),
 table td:not(:last-child) {
-    border-right: 2px solid #87CEEB; /* Czerwona ramka po prawej stronie */
+    border-right: 2px solid #87CEEB;
 }
-
 
 tbody tr:nth-child(odd) {
-    background-color: #87CEEB; /* Utrzymanie pierwotnego koloru dla nieparzystych wierszy */
+    background-color: #87CEEB;
 }
 
-/* Styl dla nagłówków tabeli */
 table th {
-    background-color: #224488; /* Ciemniejszy niebieski dla nagłówków tabeli */
+    background-color: #224488;
 }
 
-
-/* Stopka */
 footer {
-    background-color: #000080; /* Ciemnoniebieska stopka */
+    background-color: #000080;
     color: white;
     text-align: center;
     padding: 20px;
     margin-top: auto;
-	margin-left: 30px;
-	margin-right: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
-/* Stylizacja formularza na dwie kolumny */
 form {
     display: flex;
     gap: 20px;
@@ -194,8 +187,6 @@ input[type="submit"]:hover {
     background-color: #224488;
 }
 
-
-/* Ustawienie radia i selecta w jednej kolumnie */
 form > div:last-child {
     display: flex;
     flex-direction: column;
@@ -203,12 +194,11 @@ form > div:last-child {
 }
 
 
-
 header nav ul li ul li a {
-    background-color: #ADD8E6; /* Jaśniejsze tło */
-    padding: 8px 20px; /* Większe wcięcie po lewej */
+    background-color: #ADD8E6;
+    padding: 8px 20px;
     display: block;
     text-decoration: none;
     font-weight: normal;
-	padding-left: 30px;
+    padding-left: 30px;
 }
