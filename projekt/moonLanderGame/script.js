@@ -1,9 +1,3 @@
-    let playerName = prompt("Please enter your name:", "Player");
-    if (!playerName) {
-        playerName = "Player";
-    }
-
-    fetchUserData();
 
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -19,11 +13,11 @@
     let fuel = 100;
     let speed = 0;
     let height = canvas.height - 100;
-    let x = Math.random() * canvas.width; // Random horizontal position
+    let x = Math.random() * canvas.width;
     let y = 100;
     let angle = 0;
     let vx = 0;
-    let vy = 1; // Ensure no upward motion initially
+    let vy = 1;
     let isThrusting = false;
     let isRotatingLeft = false;
     let isRotatingRight = false;
@@ -31,21 +25,12 @@
     let stopGame = false;
 
     const terrainPoints = generateTerrain();
-    terrainPoints.forEach((point) => {
-        console.log("X: " + point.x + " Y: " + point.y);
-    });
-    console.log(canvas.width, canvas.height);
-    console.log("X points range from : " + canvas.width / 2 - 50 + " to: " + canvas.width / 2 + 50);
+
     const xPointsRangeForPlatform = terrainPoints.filter(point =>
         point.x >= canvas.width / 2 - 50 && point.x <= canvas.width / 2 + 100
         );
     const maxYCoordinateForPlatform = xPointsRangeForPlatform.reduce((min, point) => point.y > min.y ? point : min, xPointsRangeForPlatform[0]);
 
-    console.log("X points: ");
-    xPointsRangeForPlatform.forEach((point) => {
-        console.log("X: " + point.x +" Y: "+ point.y);
-    });
-    console.log("Max Y coordinate: " + maxYCoordinateForPlatform.y);
     const landingPlatform = {
         x: canvas.width / 2 - 50,
         y: maxYCoordinateForPlatform.y - 50,
@@ -53,8 +38,11 @@
         height: 10
     };
 
-    console.log("Landing platform x: " + landingPlatform.x + " Landing platform y: " + landingPlatform.y);
 
+    let playerName = prompt("Please enter your name:", "Player");
+    if (!playerName) {
+        playerName = "Player";
+    }
 
     function generateTerrain() {
         const points = [];
@@ -81,7 +69,6 @@
         ctx.translate(x, y);
         ctx.rotate(angle);
 
-        // Draw rocket body
         ctx.fillStyle = 'white';
         ctx.beginPath();
         ctx.moveTo(-10, -15);
@@ -90,7 +77,6 @@
         ctx.closePath();
         ctx.fill();
 
-        // Draw flame if thrusting
         if (isThrusting && fuel > 0) {
             ctx.fillStyle = 'orange';
             ctx.beginPath();
@@ -109,16 +95,14 @@
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(terrainPoints[0].x, terrainPoints[0].y);
-        console.log("Punkt start: " + terrainPoints[0].x +  " : " + terrainPoints[0].y);
+
         for (let i = 1; i < terrainPoints.length; i++) {
             console.log("Punkt do: " + terrainPoints[i].x +  " : " + terrainPoints[i].y);
             ctx.lineTo(terrainPoints[i].x, terrainPoints[i].y);
         }
         ctx.stroke();
 
-        // Draw landing platform
         ctx.fillStyle = 'green';
-        console.log("Platform xy width height: " + landingPlatform.x, landingPlatform.y, landingPlatform.width, landingPlatform.height);
         ctx.fillRect(landingPlatform.x, landingPlatform.y, landingPlatform.width, landingPlatform.height);
     };
 
@@ -136,7 +120,7 @@
                 alert(`You landed successfully ${playerName}! Your score: ${score} points.`);
                 sendPlayerData(playerName, score);
                 if (confirm("Play again?")) {
-                    fetchUserData();
+                    fetchPlayerData();
                     resetGame();
                 } else {
                     stopGame = true;
@@ -198,8 +182,6 @@
 
         checkLanding();
         updateHUD();
-
-        // console.log(`X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, VX: ${vx.toFixed(2)}, VY: ${vy.toFixed(2)}, Fuel: ${fuel.toFixed(2)}, Angle: ${(angle * (180 / Math.PI)).toFixed(2)}°`);
     };
 
 
@@ -207,11 +189,11 @@
         fuel = 100;
         speed = 0;
         height = canvas.height - 100;
-        x = Math.random() * canvas.width; // Randomize horizontal position on reset
+        x = Math.random() * canvas.width;
         y = 100;
         angle = 0;
         vx = 0;
-        vy = 1; // Ensure no upward motion initially
+        vy = 1;
         startTime = Date.now();
     };
 
@@ -254,4 +236,5 @@
         if (e.key === 'ArrowRight') isRotatingRight = false;
     });
 
+    fetchPlayerData();
     gameLoop();
