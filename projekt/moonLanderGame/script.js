@@ -94,9 +94,9 @@
 
     function getTransformedVertices(x, y, angle) {
         const vertices = [
-            {px: -10, py: -15, label: "Left Top"}, // Lewy górny wierzchołek
-            {px: 10, py: -15, label: "Right Top"},  // Prawy górny wierzchołek
-            {px: 0, py: 15, label: "Bottom - Engine"}     // Dolny środek - miejsce napędu rakiety
+            {px: -10, py: -15, label: "Left Top"},
+            {px: 10, py: -15, label: "Right Top"},
+            {px: 0, py: 15, label: "Bottom - Engine"}
         ];
 
         return vertices.map(vertex => {
