@@ -1,4 +1,3 @@
-
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -23,12 +22,13 @@
     let isRotatingRight = false;
     let startTime = Date.now();
     let stopGame = false;
+    let transformedVertices = [];
 
     const terrainPoints = generateTerrain();
 
     const xPointsRangeForPlatform = terrainPoints.filter(point =>
         point.x >= canvas.width / 2 - 50 && point.x <= canvas.width / 2 + 100
-        );
+    );
     const maxYCoordinateForPlatform = xPointsRangeForPlatform.reduce((min, point) => point.y > min.y ? point : min, xPointsRangeForPlatform[0]);
 
     const landingPlatform = {
@@ -77,6 +77,8 @@
         ctx.closePath();
         ctx.fill();
 
+        transformedVertices = getTransformedVertices(x, y, angle);
+
         if (isThrusting && fuel > 0) {
             ctx.fillStyle = 'orange';
             ctx.beginPath();
@@ -90,6 +92,22 @@
         ctx.restore();
     };
 
+    function getTransformedVertices(x, y, angle) {
+        const vertices = [
+            {px: -10, py: -15, label: "Left Top"}, // Lewy górny wierzchołek
+            {px: 10, py: -15, label: "Right Top"},  // Prawy górny wierzchołek
+            {px: 0, py: 15, label: "Bottom - Engine"}     // Dolny środek - miejsce napędu rakiety
+        ];
+
+        return vertices.map(vertex => {
+            return {
+                x: x + (vertex.px * Math.cos(angle) - vertex.py * Math.sin(angle)),
+                y: y + (vertex.px * Math.sin(angle) + vertex.py * Math.cos(angle)),
+                label: vertex.label
+            };
+        });
+    }
+
     const drawTerrain = () => {
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 2;
@@ -97,7 +115,6 @@
         ctx.moveTo(terrainPoints[0].x, terrainPoints[0].y);
 
         for (let i = 1; i < terrainPoints.length; i++) {
-            console.log("Punkt do: " + terrainPoints[i].x +  " : " + terrainPoints[i].y);
             ctx.lineTo(terrainPoints[i].x, terrainPoints[i].y);
         }
         ctx.stroke();
@@ -107,18 +124,36 @@
     };
 
 
+    function checkLanderPosition(transformedVertices) {
+        let isLandingPositionValid = false;
+        let leftTop = transformedVertices[0];
+        let rightTop = transformedVertices[1];
+        let bottom = transformedVertices[2];
+        if (typeof leftTop !== "undefined" && typeof rightTop !== "undefined" && typeof bottom !== "undefined") {
+            if (bottom.y - leftTop.y < 15 || bottom.y - rightTop.y < 15) {
+                isLandingPositionValid = true;
+            }
+        }
+
+        return isLandingPositionValid;
+    }
+
     const checkLanding = () => {
         const elapsedTime = (Date.now() - startTime) / 1000;
-
         if (
             x > landingPlatform.x &&
             x < landingPlatform.x + landingPlatform.width &&
             y >= landingPlatform.y - 15
         ) {
             if (Math.sqrt(vx * vx + vy * vy) < 3) {
-                const score = Math.floor(fuel) + 10000 - Math.floor(elapsedTime) * 500;
-                alert(`You landed successfully ${playerName}! Your score: ${score} points.`);
-                sendPlayerData(playerName, score);
+                if (checkLanderPosition(transformedVertices)) {
+                    alert('Crash!Wrong landing position!');
+                } else {
+                    const score = Math.floor(fuel) + 10000 - Math.floor(elapsedTime) * 500;
+                    alert(`You landed successfully ${playerName}! Your score: ${score} points.`);
+                    sendPlayerData(playerName, score);
+                }
+
                 if (confirm("Play again?")) {
                     fetchPlayerData();
                     resetGame();
@@ -189,7 +224,8 @@
         fuel = 100;
         speed = 0;
         height = canvas.height - 100;
-        x = Math.random() * canvas.width;
+        mathRand = Math.random();
+        x = mathRand * canvas.width;
         y = 100;
         angle = 0;
         vx = 0;

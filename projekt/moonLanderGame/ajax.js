@@ -60,6 +60,5 @@ function displayPlayerData(players) {
     });
     displayText += "</ul>";
 
-    console.log(displayText);
     document.getElementById("api-data").innerHTML = displayText;
 }
